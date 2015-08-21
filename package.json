@@ -11,5 +11,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Hiron Das <hcdas.09@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HironDas/express_beginning.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HironDas/express_beginning/issues"
+  },
+  "homepage": "https://github.com/HironDas/express_beginning"
 }
