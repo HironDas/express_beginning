@@ -12,8 +12,16 @@ app.use(express.static("public"));
 
 app.get('/blocks', function(request, response){
     var blocks = ["Fixed", "Movable", "Rotating"];
-    response.json(blocks);
-})
+
+    if (request.query.limit >= 0) {
+
+    	response.json(blocks.slice(0, request.query.limit));
+
+    }else {
+
+    	response.json(blocks);
+    }
+});
 
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT|| 3000);
