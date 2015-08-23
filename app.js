@@ -28,6 +28,8 @@ app.get('/blocks', function(request, response){
     }
 });
 
+
+
 var blocks = {
 	'Fixed': 'Fastened securely in position',
 	'Movable': 'Capable of being moved',
@@ -71,6 +73,12 @@ app.post('/blocks', parseUrlencoded, function(request, response){
     blocks[newBlock.name] = newBlock.description;
     
     response.status(201).json(newBlock.name);
+});
+
+app.delete('/blocks/:name', function(request, response){
+    console.log(blocks[request.blockName]);
+    delete blocks[request.blockName];
+    response.sendStatus(200);
 });
 
 

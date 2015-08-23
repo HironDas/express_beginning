@@ -3,7 +3,8 @@ $(document).ready(function(){
         var list = [];
         for(var i in blocks){
             var block = blocks[i];
-            var content = '<a href="/blocks/'+block+'">'+block+'</a>';
+            var content = '<a href="/blocks/'+block+'">'+block+'</a>'+
+            '<a href="#" data-block ="'+block+'"><img src="del.png"></a>';
             list.push($('<li>', {html: content }));
         }
         $('.block-list').append(list);
@@ -40,4 +41,26 @@ $(document).ready(function(){
         
         $('.block-list').append(list);
     }
+    
+    $('.block-list').on('click', 'a[data-block]', function(event){
+        
+        event.preventDefault();
+        
+        if(!confirm('Are you sure ?')){
+            return false;
+        }
+        
+        var target = $(event.currentTarget);
+        var theData = target.serialize();
+        
+        console.log(target.data('block'));
+        
+        $.ajax({
+            type: 'DELETE',
+            url: '/blocks/'+target.data('block')
+            // ,data: theData
+        }).done(function(){
+            target.parents('li').remove();
+        })
+    })
 });
