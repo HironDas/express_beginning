@@ -2,6 +2,11 @@ var express = require('express');
 var logger = require("./logger");
 var app = express();
 
+var bodyParser = require("body-parser");
+var parseUrlencoded = bodyParser.urlencoded({extended: false});
+
+
+
 /*app.get('/', function(request, response){
     response.sendFile(__dirname + '/public/index.html');
 });*/
@@ -59,6 +64,13 @@ app.get('/location/:name', function(request, response){
 	} else {
 		response.json(description);
 	}
+});
+
+app.post('/blocks', parseUrlencoded, function(request, response){
+    var newBlock = request.body;
+    blocks[newBlock.name] = newBlock.description;
+    
+    response.status(201).json(newBlock.name);
 });
 
 
