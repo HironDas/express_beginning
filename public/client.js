@@ -33,7 +33,7 @@ $(document).ready(function(){
         for (var i in blocks){
             block = blocks[i];
             content = '<a href="/blocks/'+block+'">'+block+'</a>'+
-            '<a href="#" data-block ="'+block+'"><img src="del.jpg"></a>';
+            '<a href="#" data-block ="'+block+'"><img src="del.png"></a>';
             
             list.push($('<li>', {html: content}));
         }
